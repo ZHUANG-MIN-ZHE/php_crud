@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_POST['Abort'])) header("Location: list.php");
-
+$ErrMsg = '';
 if (!isset($account)) $account = '';
 if (!isset($name)) $name = '';
 if (!isset($gender)) $gender = '';
@@ -36,6 +36,11 @@ if (isset($_POST['Confirm'])) {
 		
 		header("Location: doublecheck.php");
 	}
+	else {
+		echo '<script type ="text/JavaScript">';  
+		echo "alert('$ErrMsg')";  
+		echo '</script>';
+	}
 }
 ?>
 
@@ -50,7 +55,7 @@ if (isset($_POST['Confirm'])) {
 <body>
 	<h2 align="center">新增資料</h2>
 	<div>
-		<form method="POST" action="">
+		<form method="POST" action="" align="center">
 			<table align="center">
 				<tr>
 					<th>帳號</th>

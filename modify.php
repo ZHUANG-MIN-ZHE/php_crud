@@ -30,7 +30,7 @@ if (isset($_POST['Confirm'])){
 	if (!isset($_POST['Gender']) || empty($_POST['Gender'])) $ErrMsg = '性別不可為空白\n';
 	if (!isset($_POST['Birthday']) || empty($_POST['Birthday'])) $ErrMsg = '生日不可為空白\n';
 	if (!isset($_POST['Email']) || empty($_POST['Email'])) $ErrMsg = '信箱不可為空白\n';
-	print_r($_POST);
+	// print_r($_POST);
 	if (!preg_match("/^[0-9]{4}-[0-9]{2}-[0-9]{2}/", $_POST['Birthday'])) $ErrMsg = '生日格式錯誤\n';
 	if (!filter_var($_POST['Email'], FILTER_VALIDATE_EMAIL)) $ErrMsg = '信箱格式錯誤\n';
 	
@@ -42,6 +42,10 @@ if (isset($_POST['Confirm'])){
 		$_SESSION['email'] = $_POST['Email'];
 		$_SESSION['text'] = $_POST['Text'];
 		header("Location: checkmod.php");
+	}else {
+		echo '<script type ="text/JavaScript">';  
+		echo "alert('$ErrMsg')";  
+		echo '</script>';
 	}
 	
 }
